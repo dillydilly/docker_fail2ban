@@ -45,7 +45,7 @@ Copy your filters in filter.d folder, your actions in action.d and your jail.loc
 
 Then build your image
 ```
-$ docker build -t your-custom-fail2ban .
+$ docker build -t your_custom_fail2ban .
 ```
 
 When your image is ready, run it:
@@ -55,5 +55,5 @@ $ docker run -d -it \
 --name fail2ban \
 --net host \
 --privileged \
-your-custom-fail2ban
+your_custom_fail2ban
 ```
