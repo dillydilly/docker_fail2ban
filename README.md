@@ -39,7 +39,7 @@ If you want to sync fail2ban docker timezone with your host, add this argument
 If you have a lot of custom rules, build your own docker image
 ```
 $ git clone https://github.com/dillydilly/docker_fail2ban.git
-$ cd docker-fail2ban
+$ cd docker_fail2ban
 ```
 Copy your filters in filter.d folder, your actions in action.d and your jail.local in the current folder.
 
