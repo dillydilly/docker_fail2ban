@@ -17,8 +17,8 @@ $ docker run -d -it \
 --privileged \
 dillybob/fail2ban:latest
 ```
-    
-If you want to use your own jail.local and your own filters:
+
+Default: no jails are enabled, add your config (see below). The default 'jail.conf' is included for you to modify. It will get copied into the container as '/etc/fail2ban/jail.local'
 ```
 $ docker run -d -it \
 -v /path/to/filter.d/custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf \
@@ -42,14 +42,14 @@ If you have a lot of custom rules, build your own docker image
 $ git clone https://github.com/dillydilly/docker_fail2ban.git
 $ cd docker_fail2ban
 ```
-Copy your filters in filter.d folder, your actions in action.d and your jail.local in the current folder.
+Copy your filters in filter.d folder, your actions in action.d and your jail.conf in the current folder.
 
 Then build your image
 ```
 $ docker build -t your_custom_fail2ban .
 ```
 
-When your image is ready, run it:
+Run it:
 ```
 $ docker run -d -it \
 -v /var/log:/var/log \
