@@ -19,4 +19,6 @@ COPY filter.d/ /etc/fail2ban/filter.d/
 COPY action.d/ /etc/fail2ban/action.d/
 COPY jail.conf /etc/fail2ban/jail.local
 
+RUN rm -f /etc/fail2ban/jail.d/defaults-debian.conf
+
 ENTRYPOINT ["/sbin/entrypoint.sh"]

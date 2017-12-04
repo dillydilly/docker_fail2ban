@@ -21,9 +21,6 @@ function check_timezone {
     fi
 }
 
-# remove enabled sshd jail (debian default)
-rm -f /etc/fail2ban/jail.d/defaults-debian.conf
-
 check_timezone
 service fail2ban stop
 rm -f /var/run/fail2ban/*
