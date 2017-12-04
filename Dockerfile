@@ -1,8 +1,9 @@
 FROM debian:latest
+MAINTAINER Dave Dobson <ddobson@gmail.com>
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update -y -q && \
-    apt-get install -y -q --no-install-recommends\
+    apt-get install -y -q --no-install-recommends \
     fail2ban \
     iptables \
     exim4 \
@@ -10,11 +11,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     whois \
     && rm -rf /var/lib/apt/lists/*
 
-ADD docker-entrypoint.sh /usr/bin/entrypoint.sh
-RUN chmod +x /usr/bin/entrypoint.sh
+ADD docker-entrypoint.sh /sbin/entrypoint.sh
+RUN chmod +x /sbin/entrypoint.sh
 
 COPY filter.d/ /etc/fail2ban/filter.d/
 COPY action.d/ /etc/fail2ban/action.d/
-COPY jail.local /etc/fail2ban/
+COPY jail.conf /etc/fail2ban/jail.local
 
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+ENTRYPOINT ["/sbin/entrypoint.sh"]
