@@ -9,7 +9,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     exim4 \
     bsd-mailx \
     whois \
-	procps \
     && rm -rf /var/lib/apt/lists/*
 
 ADD docker-entrypoint.sh /sbin/entrypoint.sh
