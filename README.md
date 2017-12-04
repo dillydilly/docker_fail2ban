@@ -20,8 +20,9 @@ dillybob/fail2ban:latest
 Default: no jails are enabled, add your config (see below). See source repo for the default 'jail.conf' for you to use/modify.
 ```
 $ docker run -d -it \
--v ./custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf \
 -v ./jail.local:/etc/fail2ban/jail.local \
+-v ./custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf \
+-v ./custom_jail.conf:/etc/fail2ban/jail.d/custom_jail.conf \
 -v /var/log:/var/log \
 --name fail2ban \
 --net host \
@@ -45,8 +46,9 @@ services:
     container_name: fail2ban
     restart: always
     volumes:
-      - ./custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf
       - ./jail.local:/etc/fail2ban/jail.local
+      - ./custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf
+      - ./custom_jail.conf:/etc/fail2ban/jail.d/custom_jail.conf
       - /var/log:/var/log
     privileged: true
     network_mode: "host"
