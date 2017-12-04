@@ -17,7 +17,6 @@ $ docker run -d -it \
 dillybob/fail2ban:latest
 ```
 
-
 Default: no jails are enabled, add your config (see below). See source repo for the default 'jail.conf' for you to use/modify.
 ```
 $ docker run -d -it \
@@ -29,6 +28,13 @@ $ docker run -d -it \
 --privileged \
 dillybob/fail2ban:latest
 ```
+
+
+If you want to sync fail2ban docker timezone with your host, add this argument
+```
+-v /etc/timezone:/etc/timezone.host:ro
+```
+
 
 ### docker-compose
 ```
@@ -44,12 +50,6 @@ services:
       - /var/log:/var/log
     privileged: true
     network_mode: "host"
-```
-
-
-If you want to sync fail2ban docker timezone with your host, add this argument
-```
--v /etc/timezone:/etc/timezone.host:ro
 ```
 
 
