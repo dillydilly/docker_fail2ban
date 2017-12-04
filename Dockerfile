@@ -20,4 +20,4 @@ COPY action.d/ /etc/fail2ban/action.d/
 COPY jail.conf /etc/fail2ban/jail.local
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
-CMD ["/usr/bin/python3 /usr/bin/fail2ban-server"]
+CMD ["/usr/bin/fail2ban-server"]
