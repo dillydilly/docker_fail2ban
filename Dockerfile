@@ -11,12 +11,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     whois \
     python \
     python3 \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN cd /usr/src
-RUN /usr/bin/git clone -b debian-0.10 http://github.com/fail2ban/fail2ban.git
-RUN cd fail2ban
-RUN /usr/bin/python3 setup.py install
+RUN cd /usr/src && \
+/usr/bin/git -c http.sslVerify=false clone -b debian-0.10 https://github.com/fail2ban/fail2ban.git && \
+cd fail2ban && \
+/usr/bin/python3 setup.py install
 
 COPY filter.d/ /etc/fail2ban/filter.d/
 COPY action.d/ /etc/fail2ban/action.d/
