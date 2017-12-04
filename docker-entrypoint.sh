@@ -13,8 +13,11 @@ function setTimeZone {
     fi
 }
 
+# remove enabled sshd jail (debian default)
+rm -f /etc/fail2ban/jail.d/defaults-debian.conf
+
 setTimeZone
-/bin/systemctl stop fail2ban.service
+service fail2ban stop
 rm -f /var/run/fail2ban/*
-/bin/systemctl start fail2ban.service
+service fail2ban start
 tailf /var/log/fail2ban.log
