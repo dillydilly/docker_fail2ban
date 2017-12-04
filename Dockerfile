@@ -20,7 +20,7 @@ cd fail2ban && \
 COPY filter.d/ /etc/fail2ban/filter.d/
 COPY action.d/ /etc/fail2ban/action.d/
 COPY jail.conf /etc/fail2ban/jail.local
-i
+
 RUN mkdir -p /var/run/fail2ban
 RUN rm -f /etc/fail2ban/jail.d/defaults-debian.conf
 
