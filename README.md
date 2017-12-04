@@ -1,6 +1,6 @@
 # docker_fail2ban
-Docker image for fail2ban using debian:latest.
 
+fail2ban version 0.10
 
 Fail2Ban for docker environment. This is compatible with docker web hosts.
 
