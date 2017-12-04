@@ -34,7 +34,7 @@ If you want to sync fail2ban docker timezone with your host, add this argument
 -v /etc/timezone:/etc/timezone.host:ro
 ```
 
-### Lots of filters and actions
+### Build your own:
 
 If you have a lot of custom rules, build your own docker image
 ```
