@@ -1,14 +1,22 @@
 #!/bin/bash
+#
+# The use of this script should be temporary.
+# The reason is that fail2ban cannot actually be started in foreground mode AND load the configured jail at the same time
+# see: https://github.com/fail2ban/fail2ban/issues/1107
+# The first post is still relevant.
+# With fail2ban evolution, we should be able to to replace this scrip with a CMD or ENTRYPOINT in the Dockerfile
 
-function setTimeZone {
-    if [ -f "/etc/timezone.host" ]; then
-        CLIENT_TIMEZONE=$(cat /etc/timezone)
-        HOST_TIMEZONE=$(cat /etc/timezone.host)
-
-        if [ "${CLIENT_TIMEZONE}" != "${HOST_TIMEZONE}" ]; then
-            echo "Reconfigure timezone to "${HOST_TIMEZONE}
-            echo ${HOST_TIMEZONE} > /etc/timezone
+function check_timezone {
+    CURRENT_TZ=`cat /etc/timezone`
+    if [ -z $TIMEZONE ]; then
+        echo "The environment variable 'TIMEZONE' is not set, using default: $CURRENT_TZ";
+    else
+        if [ $CURRENT_TZ != $TIMEZONE ]; then
+            echo "Configuring timezone to \"$TIMEZONE\""
+            echo $TIMEZONE > /etc/timezone
             dpkg-reconfigure -f noninteractive tzdata
+        else
+            echo "Timezone already configured"
         fi
     fi
 }
@@ -16,7 +24,7 @@ function setTimeZone {
 # remove enabled sshd jail (debian default)
 rm -f /etc/fail2ban/jail.d/defaults-debian.conf
 
-setTimeZone
+check_timezone
 service fail2ban stop
 rm -f /var/run/fail2ban/*
 service fail2ban start
