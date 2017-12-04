@@ -30,6 +30,22 @@ $ docker run -d -it \
 dillybob/fail2ban:latest
 ```
 
+### docker-compose
+```
+version: "3.2"
+services:
+  fail2ban:
+    image: dillybob/fail2ban:latest
+    container_name: fail2ban
+    restart: always
+    volumes:
+      - /path/to/filter.d/custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf
+      - /path/to/jail.local:/etc/fail2ban/jail.local
+      - /var/log:/var/log
+    privileged: true
+    network_mode: "host"
+```
+
 
 If you want to sync fail2ban docker timezone with your host, add this argument
 ```
