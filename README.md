@@ -4,8 +4,7 @@ Docker image for fail2ban using debian:latest.
 
 Fail2Ban for docker environment. This is compatible with docker web hosts.
 
-You should use action **docker-iptables-multiport** which works as iptables-multiport
-except it creates/deletes rules for the 'docker0' interface.
+You should use action **docker-iptables-multiport** which works as iptables-multiport except it creates/deletes rules for the 'docker0' interface.
 
 ### Usage
 To run it:
@@ -19,7 +18,7 @@ dillybob/fail2ban:latest
 ```
 
 
-Default: no jails are enabled, add your config (see below). The default 'jail.conf' is included(github) for you to modify. It will get copied into the container as '/etc/fail2ban/jail.local'
+Default: no jails are enabled, add your config (see below). See source repo for the default 'jail.conf' for you to use/modify.
 ```
 $ docker run -d -it \
 -v /path/to/filter.d/custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf \
