@@ -14,7 +14,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/src
-RUN git clone -b debian-0.10 http://github.com/fail2ban/fail2ban.git
+RUN /usr/bin/git clone -b debian-0.10 http://github.com/fail2ban/fail2ban.git
 RUN cd fail2ban
 RUN /usr/bin/python3 setup.py install
 
