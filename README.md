@@ -5,6 +5,7 @@ Docker image for fail2ban using debian:latest.
 Fail2Ban for docker environment. This is compatible with docker web hosts.
 
 You should use action **docker-iptables-multiport** which works as iptables-multiport
+except it creates/deletes rules for the 'docker0' interface.
 
 ### Usage
 To run it:
