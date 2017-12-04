@@ -18,7 +18,8 @@ $ docker run -d -it \
 dillybob/fail2ban:latest
 ```
 
-Default: no jails are enabled, add your config (see below). The default 'jail.conf' is included for you to modify. It will get copied into the container as '/etc/fail2ban/jail.local'
+
+Default: no jails are enabled, add your config (see below). The default 'jail.conf' is included(github) for you to modify. It will get copied into the container as '/etc/fail2ban/jail.local'
 ```
 $ docker run -d -it \
 -v /path/to/filter.d/custom_filter.conf:/etc/fail2ban/filter.d/custom_filter.conf \
@@ -30,10 +31,12 @@ $ docker run -d -it \
 dillybob/fail2ban:latest
 ```
 
+
 If you want to sync fail2ban docker timezone with your host, add this argument
 ```
 -v /etc/timezone:/etc/timezone.host:ro
 ```
+
 
 ### Build your own:
 
