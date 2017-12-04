@@ -9,6 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     exim4 \
     bsd-mailx \
     whois \
+	procps \
     && rm -rf /var/lib/apt/lists/*
 
 ADD docker-entrypoint.sh /sbin/entrypoint.sh
@@ -19,3 +20,4 @@ COPY action.d/ /etc/fail2ban/action.d/
 COPY jail.conf /etc/fail2ban/jail.local
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
+CMD ["/usr/bin/python3 /usr/bin/fail2ban-server"]
