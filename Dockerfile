@@ -26,5 +26,7 @@ COPY jail.conf /etc/fail2ban/jail.local
 RUN mkdir -p /var/run/fail2ban
 RUN rm -f /etc/fail2ban/jail.d/defaults-debian.conf
 
+RUN sed -i -e 's/logtarget = \/var\/log\/fail2ban.log/logtarget = STDOUT/g' /etc/fail2ban/fail2ban.conf
+
 CMD ["-f", "start"]
 ENTRYPOINT ["/usr/local/bin/fail2ban-server"]
